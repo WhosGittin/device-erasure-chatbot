@@ -11,4 +11,4 @@ def load_records(path: str) -> list[ErasureRecord]:
         for record in data
     ]
 
-print(load_records("data/example_records.json"))
+#print(load_records("data/example_records.json"))
