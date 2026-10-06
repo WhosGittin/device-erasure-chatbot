@@ -31,7 +31,7 @@ FAILURES = [
 #Generate a list of random erasure records
 def generate_records(count: int = 100) -> list[dict]:
 
-    #For reproducibility
+    #Use a fixed seed for the random number generator to ensure reproducibility
     random.seed(42)
 
     #Set the start date for generating random erasure dates
