@@ -4,7 +4,7 @@ from typing import Protocol
 from backend.models import ErasureRecord
 
 
-class ErasureRepository(Protocol):
+class ErasureDatabase(Protocol):
 # Retrieve an erasure record by its serial number.
     def get_by_serial_number(
         self,
