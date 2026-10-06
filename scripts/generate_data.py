@@ -1,6 +1,6 @@
 import json
 import random
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 
 #List of manufacturers, models, methods, and failure reasons for generating random erasure records
 MANUFACTURERS = [
