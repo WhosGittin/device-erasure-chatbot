@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
-#Define a dataclass to represent an erasure record
+#A dataclass to store erasure records
 @dataclass
 class ErasureRecord:
     serial_number: str

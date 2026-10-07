@@ -1,3 +1,4 @@
+# Local database tools implementation
 class LocalDatabaseTools:
 
     def __init__(self, records):

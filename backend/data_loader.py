@@ -2,6 +2,7 @@ import json
 
 from models import ErasureRecord
 
+#Load erasure records from a JSON file and convert them into ErasureRecord objects.
 def load_records(path: str) -> list[ErasureRecord]:
     with open(path) as file:
         data = json.load(file)
