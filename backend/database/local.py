@@ -1,5 +1,5 @@
 # Local database tools implementation
-class LocalDatabaseTools:
+class LocalDatabase:
 
     def __init__(self, records):
         self.records = records
