@@ -48,6 +48,7 @@ def count_erasures(
         "count": count
     }
 
+#Search and return a list of erasure records that match the given parameters using the provided database tools.
 def search_erasures(
     tools: DatabaseTools,
     manufacturer: str | None = None,
