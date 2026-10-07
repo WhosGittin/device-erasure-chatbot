@@ -1,8 +1,7 @@
-# Using protocol to make sure ErasureRecord-object provides the required methods
+from datetime import datetime
 from typing import Protocol
 
 from backend.models import ErasureRecord
-
 
 #Interface for database tools to ensure that any implementation provides the required methods for interacting with erasure records.
 class DatabaseTools(Protocol):
@@ -14,13 +13,11 @@ class DatabaseTools(Protocol):
         ...
 
 #Search for erasure records based on manufacturer, status, and/or date.
-#Limit the number of results to stop the whole database from being returned.
     def search(
         self,
         manufacturer: str | None = None,
         status: str | None = None,
-        erasure_date: str | None = None,
-        limit: int | int = 20,
+        erasure_date: datetime | None = None,
     ) -> list[ErasureRecord]:
         ...
 
@@ -29,6 +26,6 @@ class DatabaseTools(Protocol):
         self,
         manufacturer: str | None = None,
         status: str | None = None,
-        erasure_date: str | None = None,
+        erasure_date: datetime | None = None,
     ) -> int:
         ...
