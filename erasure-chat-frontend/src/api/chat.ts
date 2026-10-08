@@ -1,25 +1,23 @@
+//Define the structure of the response from the chat API
+type ChatResponse = {
+  reply: Record<string, unknown>;
+};
+
+//Function to send a message to the chat API and receive a response
 export async function getChatResponse(message: string): Promise<string> {
-  // Simulate a small network delay.
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  const response = await fetch("http://127.0.0.1:8000/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ message }),
+  });
 
-  if (message.includes("SN-TEST-0001")) {
-    return (
-      "This is a mock response for SN-TEST-0001. " +
-      "When the backend is connected, I will retrieve " +
-      "the actual erasure record."
-    );
+  if (!response.ok) {
+    throw new Error("The backend request failed.");
   }
 
-  if (message.toLowerCase().includes("failed")) {
-    return (
-      "This is a mock response about failed erasures. " +
-      "The real backend will calculate the actual count."
-    );
-  }
+  const data: ChatResponse = await response.json();
 
-  return (
-    "I received your question: " +
-    message +
-    ". The real AI assistant will be connected later."
-  );
+  return JSON.stringify(data.reply, null, 2);
 }
