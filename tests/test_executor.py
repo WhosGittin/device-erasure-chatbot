@@ -3,6 +3,8 @@ from backend.data_loader import load_records
 from backend.database.local import LocalDatabase
 from backend.aitools.executor import *
 
+#Test for the executor's get_erasure_by_serial_number function to ensure
+# it correctly retrieves an erasure record by its serial number.
 def test_executor_get_erasure_by_serial_number():
     # Load test data from the JSON file
     records = load_records("data/example_records.json")
