@@ -1,6 +1,6 @@
 import json
 
-from backend.models import ErasureRecord
+from models import ErasureRecord
 
 #Load erasure records from a JSON file and convert them into ErasureRecord objects.
 def load_records(path: str) -> list[ErasureRecord]:

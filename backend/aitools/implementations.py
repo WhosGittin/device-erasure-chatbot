@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from backend.database.base import Database
+from database.base import Database
 
 #Retrieve an erasure record by its serial number using the provided database tools.
 def get_erasure_by_serial_number(

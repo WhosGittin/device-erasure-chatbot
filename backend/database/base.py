@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Protocol
 
-from backend.models import ErasureRecord
+from models import ErasureRecord
 
 #Interface for database tools to ensure that any implementation provides the required methods for interacting with erasure records.
 class Database(Protocol):
