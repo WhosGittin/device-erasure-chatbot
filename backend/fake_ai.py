@@ -1,4 +1,4 @@
-from backend.chat.chat_interface import ChatModel
+from backend.chat_interface import ChatModel
 
 #A fake AI model implementation for testing purposes and local development
 class FakeAIModel:
