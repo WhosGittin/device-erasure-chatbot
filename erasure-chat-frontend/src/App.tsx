@@ -2,12 +2,14 @@ import { useState } from "react";
 import "./App.css";
 import { getChatResponse } from "./api/chat";
 
+//Define the structure of a chat message
 type Message = {
   id: number;
   role: "user" | "assistant";
   content: string;
 };
 
+//Example prompts that are given by default for the user in the chat window
 const examplePrompts = [
   "How many erasures failed?",
   "Why did SN-TEST-0001 fail?",
@@ -18,6 +20,7 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
 
+  //Function for sending a message through the chat window
   async function sendMessage(text: string) {
     const trimmedText = text.trim();
 
@@ -25,6 +28,7 @@ function App() {
       return;
     }
 
+    //Define the message sent by user
     const userMessage: Message = {
       id: Date.now(),
       role: "user",
@@ -32,18 +36,21 @@ function App() {
     };
 
     setMessages((previous) => [...previous, userMessage]);
+
+    //Empty the input text field after message is sent
     setInput("");
 
     try {
       const reply = await getChatResponse(trimmedText);
 
-      const assistanMessage: Message = {
+      //Define the reply sent by the assistant
+      const assistantMessage: Message = {
         id: Date.now() + 1,
         role: "assistant",
         content: reply,
       };
 
-      setMessages((previous) => [...previous, assistanMessage]);
+      setMessages((previous) => [...previous, assistantMessage]);
     } catch {
       setMessages((previous) => [
         ...previous,
