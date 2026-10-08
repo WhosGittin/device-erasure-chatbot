@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import { getChatResponse } from "./api/chat";
 
 type Message = {
   id: number;
@@ -17,7 +18,7 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
 
-  function sendMessage(text: string) {
+  async function sendMessage(text: string) {
     const trimmedText = text.trim();
 
     if (!trimmedText) {
@@ -30,16 +31,30 @@ function App() {
       content: trimmedText,
     };
 
-    const assistantMessage: Message = {
-      id: Date.now() + 1,
-      role: "assistant",
-      content:
-        "This is a placeholder response. Once we connect the backend, I will be able to look up device erasure records.",
-    };
-
-    setMessages((previous) => [...previous, userMessage, assistantMessage]);
-
+    setMessages((previous) => [...previous, userMessage]);
     setInput("");
+
+    try {
+      const reply = await getChatResponse(trimmedText);
+
+      const assistanMessage: Message = {
+        id: Date.now() + 1,
+        role: "assistant",
+        content: reply,
+      };
+
+      setMessages((previous) => [...previous, assistanMessage]);
+    } catch {
+      setMessages((previous) => [
+        ...previous,
+        {
+          id: Date.now() + 1,
+          role: "assistant",
+          content:
+            "Sorry, there was an error processing your request. Please try again.",
+        },
+      ]);
+    }
   }
 
   return (
