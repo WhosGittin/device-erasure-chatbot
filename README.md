@@ -55,6 +55,12 @@ So the plan was to first develop a solution that works fully locally, but design
 
 ## How to run
 
+frontend: npm run dev
+
+testit: pytest
+
+backend server: ../backend python -m uvicorn api:app --reload
+
 ## Decisions
 
 ## AI usage
