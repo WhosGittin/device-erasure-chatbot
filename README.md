@@ -6,7 +6,7 @@
 
 ### The plan
 
-I started this challenge by prompting ChatGPT with the assignment and asked how and with what tools should I start creating the chatbot. ChatGPT came up with the following architecture:
+I started this challenge by prompting ChatGPT with the assignment and asked how, and with what tools should I start creating the chatbot. ChatGPT came up with the following architecture:
 
 ![The device erasure chatbot architecture](documentation/initial_architecture.png)
 
@@ -49,7 +49,7 @@ So the plan was to first develop a solution that works fully locally, but design
     - test_executor.py | Test for testing the executor.py
     - test_get_erasure.py | Test for testing getting a erasure record by its serial number from the database
 
-So in its current form, I got the project to a point where there is a working frontend hosted locally. The user can get details of a given erasure record (fetched from the example_records.json) by typing the serial number of the record in to the chat box. In the finished product, this data would have been fed to the LLM, and it would've come up with a coherent answer. The project in its current state is far from what the assignment asked for, but I feel like there's still something concrete to look at and test. Given I had no preliminary knowledge of the services and technologies used in the assignment, expect for a tiny bit of React, I am really proud of what I managed to accomplish.
+So in its current form, I got the project to a point where there is a working front- and backend hosted locally. The user can get details of a given erasure record (fetched from the example_records.json) by typing the serial number of the record in to the chat box. In the finished product, this data would have been fed to the LLM, and it would've come up with a coherent answer. The project in its current state is far from what the assignment asked for, but I feel like there's still something concrete to look at and test. Given I had no preliminary knowledge of the services and technologies used in the assignment, expect for a tiny bit of React, I am really proud of what I managed to accomplish.
 
 ## How to run
 
@@ -97,6 +97,21 @@ The whole project should now be up and running. By typing in the chat any of the
 
 ## Decisions
 
-At this point I feel like the choice to go fully local at first was bit of a mistake considering the time constraints.
+I decided to go with the chosen stack because the project had to be deployed to AWS, and according to chatgpt, the applications in this stack had a good compatibility with AWS. And most of the technologies were in fact provided by Amazon. I went through the plan laid out by chatgpt, and after conducting a bit of researching myself into the different parts of the stack, I decided to go with it. I didnt use any time with researching for any alternatives, as I didnt have any I was familiar with.
+
+Didnt get to dive deep into any of the AWS-apps which were supposed to be implemented, but for:
+
+- LLM the Amazon Bedrock would've been used for it's wide catalog of different models
+- Data would've been stored using DynamoDB
 
 ## AI usage
+
+I used ChatGPT to come up with the architectural and developmental plan. I used it to teach me about the consepts and implementation of different parts of the project. A central part of my prompts was the question "why", why is something done the way it is.
+
+Example prompt I used:
+
+- "I want to make the assignment using the architecture as depicted below (pic). I want to start by first building the majority locally and run the tests offline, and then replace the implementations for AWS deployment. Assume I have minor experience or no experience at all regarding the different tools and technologies used in the project. Can you walk me through the process of creating this project, and describe step by step why we do the things we do."
+
+I also utilized chatgpt for debugging, when I encountered errors I couldn't figure out by myself.
+
+Something I noticed when the chats with chatgpt started to get longer, it started to become inconsistent. For example the names of different classes or files might've changed suddenly. Also it had hard time remembering the folder structure of the project, and it seemed to change a bit everytime chatgpt mentioned it.
