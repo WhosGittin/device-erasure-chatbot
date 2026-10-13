@@ -89,7 +89,7 @@ Frontend is now accessible from the Local URL provided in the terminal
 
 Two local tests can be found in device-erasure-chatbot/tests/, however they are giving an error because of invalid import pathing. I feel like there's something funky going on with my project structure, which has been giving me quite a bit of trouble with ImportErrors. If I fix the error given by tests, then some other aspect of my project breaks and starts giving me the same error.
 
-Local tests can be ran from the project root device-erasure-chatbot/ with `python -m pytest`
+For what it's worth, local tests can be ran from the project root device-erasure-chatbot/ with `python -m pytest`
 
 ### Setup done
 
