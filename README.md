@@ -49,19 +49,51 @@ So the plan was to first develop a solution that works fully locally, but design
     - test_executor.py | Test for testing the executor.py
     - test_get_erasure.py | Test for testing getting a erasure record by its serial number from the database
 
-So in its current form, I got the project to a point where there is a working frontend hosted locally. The user can get details of a given erasure record (fetched from the example_records.json) by typing the serial number of the record in to the chat box. In the finished product, this data would have been fed to the LLM, and it would've come up with a coherent answer. The project in its current state is far from the finished product, but I feel like there's still something concrete to look at and test. Given I had no preliminary knowledge regarding the concepts and technologies in the assignment, expect for React, I am really proud of what I managed to accomplish.
+So in its current form, I got the project to a point where there is a working frontend hosted locally. The user can get details of a given erasure record (fetched from the example_records.json) by typing the serial number of the record in to the chat box. In the finished product, this data would have been fed to the LLM, and it would've come up with a coherent answer. The project in its current state is far from what the assignment asked for, but I feel like there's still something concrete to look at and test. Given I had no preliminary knowledge of the services and technologies used in the assignment, expect for a tiny bit of React, I am really proud of what I managed to accomplish.
 
 ## How to run
 
-TESTIT EI TOIMI KOSKA EPÄTAVALLISUUKSIA IMPORT POLUISSA
+### Prerequisites
 
-frontend: npm run dev
+- Python 3.11.5
+- Node.js v24.21.0
 
-testit: pytest
+### Setup backend
 
-backend server: ../backend python -m uvicorn api:app --reload
+1. In device-erasure-chatbot/backend/ create python venv
+   `python -m venv .venv`
+   and activate it
+   `.\.venv\Scripts\Activate.ps1`
+2. Install dependencies `python -m pip install -r requirements.txt`
+3. Start the API `python -m uvicorn api:app --reload`
 
-generate_data.py
+Go to http://127.0.0.1:8000/health to check if the API works
+
+### Setup frontend
+
+The backend now running, open a second terminal.
+
+1. Navigate to device-erasure-chatbot/erasure-chat-frontend/
+2. Install packages `npm ci`
+3. Start frontend `npm run dev`
+
+Frontend is now accessible from the Local URL provided in the terminal
+
+### Generate example data
+
+1. Navigate to device-erasure-chatbot/scripts/
+2. Run generate.data.py `python generate_data.py`
+3. A json file with example data should now be found in device-erasure-chatbot/data/
+
+### Local tests
+
+Two local tests can be found in device-erasure-chatbot/tests/, however they are giving an error because of invalid import pathing. I feel like there's something funky going on with my project structure, which has been giving me quite a bit of trouble with ImportErrors. If I fix the error given by tests, then some other aspect of my project breaks and starts giving me the same error.
+
+Local tests can be ran from the project root device-erasure-chatbot/ with `python -m pytest`
+
+### Setup done
+
+The whole project should now be up and running. By typing in the chat any of the serial numbers found in example data, it responds with full details of the given entry.
 
 ## Decisions
 
