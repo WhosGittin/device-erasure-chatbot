@@ -222,8 +222,6 @@ __marimo__/
 # OMAT
 example_records.json
 
-# REACT
-
 # Logs
 logs
 *.log
