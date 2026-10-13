@@ -72,7 +72,7 @@ def generate_records(count: int = 100) -> list[dict]:
 if __name__ == "__main__":
 
     records = generate_records(100)
-    with open("data/example_records.json", "w") as file:
+    with open("../data/example_records.json", "w") as file:
         json.dump(records, file, indent=2)
 
     #Print the number of generated records to the console
