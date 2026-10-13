@@ -82,7 +82,7 @@ Frontend is now accessible from the Local URL provided in the terminal
 ### Generate example data
 
 1. Navigate to device-erasure-chatbot/scripts/
-2. Run generate.data.py `python generate_data.py`
+2. Run generate_data.py `python generate_data.py`
 3. A json file with example data should now be found in device-erasure-chatbot/data/
 
 ### Local tests
